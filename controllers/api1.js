@@ -1,26 +1,18 @@
 const jwt = require("jsonwebtoken");
 
 const api1 = async(req,res)=>{ 
-   const accessTokenUser= jwt.sign({
+  const{ username , id } = req.body;
+  console.log(username, id);
+   const accessToken= jwt.sign({
       user:{
-          username:"harshvardhan"
+          name:username,
+          key:id
       },
   },
   "harsh",
   {expiresIn: "5m"}
   );
-//   const accessTokenAdmin= jwt.sign({
-//    user:{
-//        username:"harshvardhan"
-//    },
-// },
-// "harsh",
-// {expiresIn: "5m"}
-// );
-// console.log(accessToken);
-// return res.status(200).send({message:"hi viewer,here is your authentication token",accessTokenUser});
-  console.log(accessToken);
-  return res.status(200).send({message:"hi viewer,here is your authentication token",accessTokenUser});
+  return res.status(200).send({message:"hi viewer,here is your authentication token",accessToken});
 };
 
 module.exports ={ api1 }; 

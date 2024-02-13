@@ -5,7 +5,7 @@ const port = 5000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/api", require("./routers/api1_router"), require("./routers/api2_router"));
+app.use("/api", require("./routers/api1_router"), require("./routers/api2_router"), require("./routers/api3_router"));
 app.use(express.json());
 
 app.listen(port,()=>{

@@ -12,7 +12,7 @@ const validToken = async (req,res,next)=>{
             else{
                 req.user=decoded.user;
                 console.log(req.user);
-                res.status(200).send({message:`token authentication successful. Hi ${req.user.username}`})
+                // res.status(200).send({message:"token authentication successful."});
             }
             next();
         });
