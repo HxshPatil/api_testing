@@ -1,6 +1,6 @@
-const roles= {
-    "admin": 1000,
-    "user": 2000
-}
+const roles = {
+  admin: "0",
+  user: "1",
+};
 
-modules.export= roles;
+module.exports = roles;

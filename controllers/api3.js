@@ -1,13 +1,14 @@
-const api3 = async(req,res)=>{ 
+const roles = require("../roles");
 
-    if (req.user.key==="0"){
-        console.log("Hi admin!");
-        res.status(200).send({message:"Hi admin!"});
-    }
-    else if(req.user.key=== "1"){
-        console.log("Hi user!");
-        res.status(200).send({message:"Hi user!"});
-    }
+const api3 = async (req, res) => {
+  console.log(`admin:${roles.admin} , user:${roles.user}`);
+  if (req.user.key === "0") {
+    res.status(200).send({ message: "Hi admin!" });
+  } else if (req.user.key === "1") {
+    res.status(200).send({ message: "Hi user!" });
+  } else {
+    res.status(401).send({ message: "You are not authorized" });
+  }
 };
- 
- module.exports ={ api3 }; 
+
+module.exports = { api3 };
