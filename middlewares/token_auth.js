@@ -7,12 +7,16 @@ const validToken = async (req, res, next) => {
     token = authHeader.split(" ")[1];
     jwt.verify(token, "harsh", (err, decoded) => {
       if (err) {
-        res.status(401).send({ message: "validation failed" });
+        return res.status(401).send({ message: "validation failed" });
       } else {
         req.user = decoded.user;
+        next();
       }
-      next();
     });
+  } else {
+    return res
+      .status(401)
+      .send({ message: "missing token" });
   }
 };
 
